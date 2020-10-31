@@ -1,24 +1,26 @@
 
 
 function removeAllBefore(values: number[], b: number): number[] {
-
-  function findB(array, index) {
-    array.forEach(ele => {
-      ele == b      
-    });
+  let isObject: boolean = typeof(b) === 'object'
+  let isNumber: boolean = typeof (b) === 'number'
+  let responseArray: number[] = []
+  let responseEmpty: number[] = []
+  if (isObject){
+    return responseEmpty
   }
-
-
-  console.log(values.find(findB))
-  let cut = values.indexOf(b)
-  let response = values.slice(cut, values.length)
-  
-  return response;
+  if (isNumber) {
+    if (values.indexOf(b) == -1) {
+      return values
+    } else {
+      let cut:number = values.indexOf(b)
+      responseArray = values.slice(cut, values.length)
+      return responseArray
+    }
+  }
 }
 
-console.log('Example:');
-console.log(removeAllBefore([1, 2, 3, 4, 5], 3));
-
-
-
-console.log("Coding complete? Click 'Check' to earn cool rewards!");
+console.log('Example:')
+console.log(removeAllBefore([1, 2, 3, 4, 5], 99))
+console.log('--------------------------------')
+console.log(removeAllBefore([1, 2, 3, 4, 5], 3))
+console.log('-----------------------------------')
