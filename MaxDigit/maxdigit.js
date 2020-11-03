@@ -4,6 +4,7 @@ function maxDigit(value) {
     vS.forEach(function (i) {
         vN.push(Number(i));
     });
+    console.log(typeof (vN), typeof (vN[0]));
     var sortedArray = vN.sort(function (n1, n2) { return n2 - n1; });
     return sortedArray[0];
 }
