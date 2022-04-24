@@ -1,11 +1,36 @@
-function nonUniqueElements(data) {
-    var arr = [];
-    var arr1 = data.map(function (n, nn) {
-        console.log(n, data[nn + 1]);
-        return n == data[nn + 1];
+"use strict";
+exports.__esModule = true;
+function frequencySort(data) {
+    if (data == undefined)
+        return [];
+    var array = new Array();
+    var response = new Array();
+    var uniqueChars = new Set(data);
+    var uniqueArray = Array.from(uniqueChars);
+    uniqueArray.forEach(function (e, index) {
+        var frequency = 0;
+        data.forEach(function (elemento) {
+            if (elemento === uniqueArray[index])
+                frequency++;
+        });
+        array.push([uniqueArray[index], frequency]);
     });
-    console.log(arr1);
-    return arr;
+    array.sort(function (a, b) {
+        return b[1] - a[1];
+    });
+    array.forEach(function (e) {
+        for (var i = 0; i < e[1]; i++) {
+            response.push(e[0]);
+        }
+    });
+    return response;
 }
 console.log('Example:');
-console.log(nonUniqueElements([1, 2, 3, 1, 3]), [1, 3, 1, 3]);
+frequencySort([4, 6, 2, 2, 6, 4, 4, 4]), [4, 4, 4, 4, 6, 6, 2, 2];
+// assert.deepEqual(frequencySort([4, 6, 2, 2, 6, 4, 4, 4]), [4, 4, 4, 4, 6, 6, 2, 2]);
+frequencySort(['bob', 'bob', 'carl', 'alex', 'alex', 'alex', 'alex', 'bob']);
+// assert.deepEqual(frequencySort([17, 99, 42]), [17, 99, 42]);
+// frequencySort([]), [];
+// assert.deepEqual(frequencySort([]), []);
+// assert.deepEqual(frequencySort([1]), [1]);
+console.log("Coding complete? Click 'Check' to earn cool rewards!");
